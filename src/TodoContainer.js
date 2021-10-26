@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Header from './Header';
-// import TodoItem from './TodoItem';
 import TodosList from './TodosList';
+import InputTodo from './InputTodo';
 /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-access-state-in-setstate */
@@ -56,10 +56,24 @@ export default class TodoContainer extends Component {
     });
   };
 
+  addTodoItem = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false,
+    };
+    this.setState({
+      todos: [
+        ...this.state.todos, newTodo,
+      ],
+    });
+  }
+
   render() {
     return (
       <div>
         <Header />
+        <InputTodo addTodoProps={this.addTodoItem} />
         <TodosList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
