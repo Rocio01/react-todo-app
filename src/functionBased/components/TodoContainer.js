@@ -6,7 +6,12 @@ import InputTodo from './InputTodo';
 /* eslint-disable no-param-reassign */
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+  function getInitialTodos() {
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
+  const [todos, setTodos] = useState(getInitialTodos());
 
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
@@ -46,15 +51,15 @@ const TodoContainer = () => {
     );
   };
 
-  useEffect(() => {
-    console.log('test run');
-    const temp = localStorage.getItem('todos');
-    const loadedTodos = JSON.parse(temp);
+  // useEffect(() => {
+  //   console.log('test run');
+  //   const temp = localStorage.getItem('todos');
+  //   const loadedTodos = JSON.parse(temp);
 
-    if (loadedTodos) {
-      setTodos(loadedTodos);
-    }
-  }, [setTodos]);
+  //   if (loadedTodos) {
+  //     setTodos(loadedTodos);
+  //   }
+  // }, [setTodos]);
 
   useEffect(() => {
     const temp = JSON.stringify(todos);

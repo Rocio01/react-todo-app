@@ -1,26 +1,23 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem';
 /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 
 /* eslint-disable react/destructuring-assignment */
-export default class TodosList extends PureComponent {
-  render() {
-    return (
-      <div>
+const TodosList = (props) => (
+  <div>
 
-        <ul>
-          {this.props.todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              handleChangeProps={this.props.handleChangeProps}
-              deleteTodoProps={this.props.deleteTodoProps}
-              setUpdate={this.props.setUpdate}
-            />
-          ))}
-        </ul>
+    <ul>
+      {props.todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          handleChangeProps={props.handleChangeProps}
+          deleteTodoProps={props.deleteTodoProps}
+          setUpdate={props.setUpdate}
+        />
+      ))}
+    </ul>
 
-      </div>
-    );
-  }
-}
+  </div>
+);
+export default TodosList;
