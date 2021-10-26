@@ -1,8 +1,12 @@
+import { Route, Switch } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Header from './Header';
 import TodosList from './TodosList';
 import InputTodo from './InputTodo';
+import About from '../pages/About';
+import NotMatch from '../pages/NotMatch';
+import Header from './Header';
+
 /* eslint-disable no-param-reassign */
 
 const TodoContainer = () => {
@@ -51,34 +55,35 @@ const TodoContainer = () => {
     );
   };
 
-  // useEffect(() => {
-  //   console.log('test run');
-  //   const temp = localStorage.getItem('todos');
-  //   const loadedTodos = JSON.parse(temp);
-
-  //   if (loadedTodos) {
-  //     setTodos(loadedTodos);
-  //   }
-  // }, [setTodos]);
-
   useEffect(() => {
     const temp = JSON.stringify(todos);
     localStorage.setItem('todos', temp);
   }, [todos]);
 
   return (
-    <div className="Container">
-      <div className="inner">
-        <Header />
-        <InputTodo addTodoProps={addTodoItem} />
-        <TodosList
-          todos={todos}
-          handleChangeProps={handleChange}
-          deleteTodoProps={delTodo}
-          setUpdate={setUpdate}
-        />
-      </div>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <div className="Container">
+          <div className="inner">
+            <Header />
+            <InputTodo addTodoProps={addTodoItem} />
+            <TodosList
+              todos={todos}
+              handleChangeProps={handleChange}
+              deleteTodoProps={delTodo}
+              setUpdate={setUpdate}
+            />
+          </div>
+        </div>
+      </Route>
+      <Route exact path="/about">
+        <About />
+      </Route>
+      <Route exact path="*">
+        <NotMatch />
+      </Route>
+    </Switch>
+
   );
 };
 

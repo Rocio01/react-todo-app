@@ -3,10 +3,6 @@
   margin: 0;
   padding: 0;
 }
-.App {
-  width: 90%;
-  margin: 0 5%;
-}
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -23,6 +19,7 @@ body {
   align-items: center;
   max-width: 600px;
   margin: 0 auto;
+  margin: 0 5%;
 }
 
 .inner {
