@@ -5,6 +5,7 @@ import TodosList from './TodosList';
 import InputTodo from './InputTodo';
 import About from '../pages/About';
 import NotMatch from '../pages/NotMatch';
+import Navbar from './Navbar';
 import Header from './Header';
 
 /* eslint-disable no-param-reassign */
@@ -61,29 +62,31 @@ const TodoContainer = () => {
   }, [todos]);
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <div className="Container">
-          <div className="inner">
-            <Header />
-            <InputTodo addTodoProps={addTodoItem} />
-            <TodosList
-              todos={todos}
-              handleChangeProps={handleChange}
-              deleteTodoProps={delTodo}
-              setUpdate={setUpdate}
-            />
+    <>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <div className="Container">
+            <div className="inner">
+              <Header />
+              <InputTodo addTodoProps={addTodoItem} />
+              <TodosList
+                todos={todos}
+                handleChangeProps={handleChange}
+                deleteTodoProps={delTodo}
+                setUpdate={setUpdate}
+              />
+            </div>
           </div>
-        </div>
-      </Route>
-      <Route exact path="/about">
-        <About />
-      </Route>
-      <Route exact path="*">
-        <NotMatch />
-      </Route>
-    </Switch>
-
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="*">
+          <NotMatch />
+        </Route>
+      </Switch>
+    </>
   );
 };
 

@@ -15,11 +15,9 @@ const Header = () => {
           marginBottom: '2rem',
           lineHeight: '1em',
           color: '#ececec',
-          textTransform: 'lowercase',
-          textAlign: 'center',
         }}
       >
-        todos
+        Todos
       </h1>
     </header>
   );
